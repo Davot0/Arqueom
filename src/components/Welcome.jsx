@@ -27,7 +27,7 @@ export const Welcome = () => {
                 </li>
                 <li className="m-3 text-xl">
                     <NavLink to="/manuela">
-                        Manuela
+                        Manuela Cardona Cartagena
                     </NavLink>
                 </li>
             </ul> 

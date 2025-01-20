@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Manuela = () => {
     const [formData, setFormData] = useState({
@@ -6,6 +7,8 @@ const Manuela = () => {
         email: '',
         message: '',
     });
+    const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -15,11 +18,45 @@ const Manuela = () => {
         });
     };
 
+    const validateForm = () => {
+        const newErrors = {};
+
+        // Validación del nombre
+        if (!formData.name.trim()) {
+            newErrors.name = 'El nombre es obligatorio';
+        }
+
+        // Validación del email
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!formData.email.trim()) {
+            newErrors.email = 'El correo es obligatorio';
+        } else if (!emailRegex.test(formData.email)) {
+            newErrors.email = 'El correo no es válido';
+        }
+
+        // Validación del mensaje
+        if (!formData.message.trim()) {
+            newErrors.message = 'El mensaje es obligatorio';
+        }
+
+        return newErrors;
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert('Formulario enviado! :)')
-        setFormData({name: '', email: '', message: ''});
-    }
+        const validationErrors = validateForm();
+        setErrors(validationErrors);
+
+        if (Object.keys(validationErrors).length === 0) {
+            // Si no hay errores, envía el formulario
+            alert('Formulario enviado! :)');
+            setFormData({ name: '', email: '', message: '' });
+        }
+    };
+
+    const handleGoHome = () => {
+        navigate('/welcome'); 
+    };
 
     return (
         <div className="font-sans bg-[#f1e6ff] text-gray-900">
@@ -32,6 +69,12 @@ const Manuela = () => {
                         <li><a href="#hobbies" className="hover:underline">Hobbies</a></li>
                         <li><a href="#education" className="hover:underline">Formación</a></li>
                         <li><a href="#contact" className="hover:underline">Contáctame</a></li>
+                        <li>
+                            <button
+                                onClick={handleGoHome}
+                                className="px-4 py-2 bg-[#5a42a0] text-white font-semibold rounded-lg">Volver al inicio
+                            </button>
+                        </li>
                     </ul>
                 </nav>
             </header>
@@ -46,14 +89,38 @@ const Manuela = () => {
             <section id="skills" className="py-20 px-8 text-center">
                 <h2 className="text-3xl font-semibold text-[#6a4fbb] mb-4">Habilidades</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">JavaScript</div>
-                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">React</div>
-                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">HTML5</div>
-                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">CSS</div>
-                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">Python</div>
-                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">Base de datos</div>
-                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">Análisis de datos</div>
-                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">GitHub</div>
+                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">
+                        <h3>JavaScript</h3>
+                        <p className="text-sm text-gray-600">Lenguaje de programación dinámico y flexible para desarrollo web.</p>
+                    </div>
+                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">
+                        <h3>React</h3>
+                        <p className="text-sm text-gray-600">Biblioteca de JavaScript para construir interfaces de usuario interactivas.</p>
+                    </div>
+                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">
+                        <h3>HTML5</h3>
+                        <p className="text-sm text-gray-600">Estandarización del lenguaje de marcado para crear páginas web.</p>
+                    </div>
+                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">
+                        <h3>CSS</h3>
+                        <p className="text-sm text-gray-600">Lenguaje de estilos utilizado para diseñar y maquetar sitios web.</p>
+                    </div>
+                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">
+                        <h3>Python</h3>
+                        <p className="text-sm text-gray-600">Lenguaje de programación versátil utilizado en desarrollo web y análisis de datos.</p>
+                    </div>
+                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">
+                        <h3>Base de datos</h3>
+                        <p className="text-sm text-gray-600">Gestión y organización de datos en sistemas estructurados.</p>
+                    </div>
+                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">
+                        <h3>Análisis de datos</h3>
+                        <p className="text-sm text-gray-600">Técnicas para interpretar y extraer información útil de grandes cantidades de datos.</p>
+                    </div>
+                    <div className="bg-[#e0c6f8] p-6 rounded-lg shadow-lg">
+                        <h3>GitHub</h3>
+                        <p className="text-sm text-gray-600">Plataforma para gestionar código fuente y colaborar en proyectos de desarrollo.</p>
+                    </div>
                 </div>
             </section>
 
@@ -89,7 +156,7 @@ const Manuela = () => {
                         placeholder="Tu nombre"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="w-full p-4 rounded-lg border-2 border-gray-300"
+                        className="w-full p-4 rounded-lg border-2 border-gray-300 text-gray-800"
                     />
                     <input
                         type="email"
@@ -97,18 +164,18 @@ const Manuela = () => {
                         placeholder="Tu correo"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full p-4 rounded-lg border-2 border-gray-300"
+                        className="w-full p-4 rounded-lg border-2 border-gray-300 text-gray-800"
                     />
                     <textarea
                         name="message"
                         placeholder="Tu mensaje"
                         value={formData.message}
                         onChange={handleInputChange}
-                        className="w-full p-4 rounded-lg border-2 border-gray-300"
+                        className="w-full p-4 rounded-lg border-2 border-gray-300 text-gray-800"
                     />
                     <button
                         type="submit"
-                        className="w-full py-4 bg-[#5a42a0] text-white font-semibold rounded-lg hover:bg-[#6a4fbb]"
+                        className="w-full py-4 bg-[#5a42a0] text-white font-semibold rounded-lg transition-colors"
                     >
                         Enviar
                     </button>
