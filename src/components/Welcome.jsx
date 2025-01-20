@@ -12,7 +12,7 @@ export const Welcome = () => {
             <ul>
                 <li className="m-3 text-xl">
                     <NavLink to="/carol">
-                        Carol
+                        Carol Juliana Acevedo Cano
                     </NavLink>
                 </li>
                 <li className="m-3 text-xl">

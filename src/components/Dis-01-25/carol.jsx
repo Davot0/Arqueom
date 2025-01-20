@@ -1,3 +1,4 @@
+import { NavLink, useNavigate} from "react-router-dom"
 import React from 'react';
 
 const LandingPageCarol = () => {
@@ -6,6 +7,11 @@ const LandingPageCarol = () => {
       {/* Header */}
       <header className="bg-white shadow-md py-4 px-6 fixed w-full top-0 z-10">
         <nav className="max-w-6xl mx-auto flex justify-between items-center">
+               <li className="m-3 text-xl">
+                    <NavLink to="/welcome">
+                        Volver
+                    </NavLink>
+                </li>
           <h1 className="text-2xl font-bold text-emerald-600">Carol Acevedo 💛</h1>
           <ul className="flex space-x-6">
             <li><a href="#inicio" className="text-gray-600 hover:text-emerald-600 transition-colors">Inicio</a></li>
@@ -22,11 +28,6 @@ const LandingPageCarol = () => {
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Mi nombre es Carol Acevedo. Soy una apasionada por el desarrollo web.
           </p>
-          <div className="mt-8">
-            <button className="bg-emerald-600 text-white px-8 py-3 rounded-full hover:bg-emerald-700 transition-colors">
-              Contacto
-            </button>
-          </div>
         </section>
 
         {/* Sobre mí */}
