@@ -17,7 +17,7 @@ export const Welcome = () => {
                 </li>
                 <li className="m-3 text-xl">
                     <NavLink to="/estefania">
-                        Estefania
+                        Estefanía Díaz Lopera
                     </NavLink>
                 </li>
                 <li className="m-3 text-xl">
