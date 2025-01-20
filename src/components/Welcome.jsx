@@ -22,7 +22,7 @@ export const Welcome = () => {
                 </li>
                 <li className="m-3 text-xl">
                     <NavLink to="/jhojan">
-                        Jhojan
+                        Jhojan Sánchez Arango
                     </NavLink>
                 </li>
                 <li className="m-3 text-xl">
