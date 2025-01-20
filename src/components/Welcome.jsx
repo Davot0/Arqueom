@@ -12,22 +12,22 @@ export const Welcome = () => {
             <ul>
                 <li className="m-3 text-xl">
                     <NavLink to="/carol">
-                        Carol
+                        Carol Juliana Acevedo Cano
                     </NavLink>
                 </li>
                 <li className="m-3 text-xl">
                     <NavLink to="/estefania">
-                        Estefania
+                        Estefanía Díaz Lopera
                     </NavLink>
                 </li>
                 <li className="m-3 text-xl">
                     <NavLink to="/jhojan">
-                        Jhojan
+                        Jhojan Sánchez Arango
                     </NavLink>
                 </li>
                 <li className="m-3 text-xl">
                     <NavLink to="/manuela">
-                        Manuela
+                        Manuela Cardona Cartagena
                     </NavLink>
                 </li>
             </ul> 
