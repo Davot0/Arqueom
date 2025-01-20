@@ -1,6 +1,6 @@
-import React,{ useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from "react-router-dom"
-import { Book, Gamepad2, Dumbbell, Laptop, Pen, User, Briefcase, GraduationCap, } from 'lucide-react';
+import { Book, Gamepad2, Dumbbell, Laptop, Pen, User, Briefcase, GraduationCap, Contact, } from 'lucide-react';
 
 const Jhojan = () => {
   // Añade estos estados y funciones justo aquí, después de la declaración del componente
@@ -79,7 +79,7 @@ const Jhojan = () => {
           {[
             { href: "#about", text: "Acerca de mí", icon: <User size={16} className="text-blue-500" /> },
             { href: "#hobbies", text: "Pasatiempos", icon: <Briefcase size={16} className="text-purple-500" /> },
-            { href: "#education", text: "Estudios", icon: <GraduationCap size={16} className="text-green-500" /> }
+            { href: "#contact", text: "Contacto", icon: <Contact size={16} className="text-green-500" /> }
           ].map((item) => (
             <li key={item.href}>
               <a href={item.href} className="text-gray-600 no-underline text-sm hover:text-gray-900 transition-colors flex items-center gap-2">
@@ -114,6 +114,11 @@ const Jhojan = () => {
             </div>
           </section>
 
+          <div className="md:col-span-2 text-center mb-8">
+            <h2 className="text-4xl font-bold text-gray-800">Mis Actividades</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+          </div>
+
           {/* Sección Pasatiempos  */}
           <section id="hobbies" className="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 md:translate-y-4 scroll-margin-top-24 pt-20">
             <h2 className="text-3xl font-bold mb-4 text-gray-800">Pasatiempos</h2>
@@ -135,8 +140,8 @@ const Jhojan = () => {
           </section>
 
           {/* Sección Estudios  */}
-          <section id="education" className="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 md:-translate-y-4 scroll-margin-top-24 pt-20">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">Estudios y Conocimientos</h2>
+          <section id="education" className="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 md:translate-y-4 scroll-margin-top-24 pt-20">
+            <h2 className="text-3xl font-bold mb-4 text-gray-800">Estudios</h2>
             <p className="text-gray-600 mb-8 leading-relaxed">
               Tengo experiencia en desarrollo web, JavaScript, Angular, y otras tecnologías modernas.
             </p>
